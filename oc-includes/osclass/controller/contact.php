@@ -147,13 +147,18 @@ MESSAGE;
 
                                             osc_run_hook('pre_contact_post', $params);
 
-                                            osc_sendMail(osc_apply_filter('contact_params', $params));
+                                            $sendSucc = osc_sendMail(osc_apply_filter('contact_params', $params));
 
                                             if( isset($tmpName) ) {
                                                 @unlink($tmpName);
                                             }
 
-                                            osc_add_flash_ok_message( _m('Your email has been sent properly. Thank you for contacting us!') );
+                                            if ($sendSucc) {
+						osc_add_flash_ok_message( _m('Your email has been sent properly. Thank you for contacting us!') );
+					    }
+					    else {
+						osc_add_flash_ok_message( _m('Sorry, your email cannot be sent due to system problems at this moment!') );
+					    }
                                         } else {
                                             osc_add_flash_error_message( _m('The file you tried to upload does not have a valid extension') );
                                         }
