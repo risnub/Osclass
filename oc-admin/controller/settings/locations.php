@@ -102,7 +102,8 @@
 
                                             $ok = $mCountries->update(array('s_name'=> $name, 's_slug' => $slug), array('pk_c_code' => Params::getParam('country_code')));
 
-                                            if( $ok ) {
+											// 'update()' returns number of rows affected (0...n) or 'false'
+                                            if( $ok || ($ok === 0)) {
                                                 osc_add_flash_ok_message(_m('Country has been edited'), 'admin');
                                             } else {
                                                 osc_add_flash_error_message(_m('There were some problems editing the country'), 'admin');
