@@ -72,7 +72,9 @@
                                                             $this->redirectTo(osc_admin_base_url(true)."?page=languages&action=add");
                                                 break;
                                                 case(-1):
-                                                default:    $msg = _m('There was a problem adding the language');
+                                                default:    
+															error_log("Actually here with status =$status".PHP_EOL);
+															$msg = _m('There was a problem adding the language');
                                                             osc_add_flash_error_message($msg, 'admin');
                                                 break;
                                             }
