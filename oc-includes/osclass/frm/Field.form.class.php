@@ -23,21 +23,21 @@
         <script type="text/javascript">
 
             $.datepicker.regional['custom'] = { // Default regional settings
-		closeText: '<?php echo osc_esc_js ( __('Done') ); ?>', // Display text for close link
-		prevText: '<?php echo osc_esc_js ( __('Prev') ); ?>', // Display text for previous month link
-		nextText: '<?php echo osc_esc_js ( __('Next') ); ?>', // Display text for next month link
-		currentText: '<?php echo osc_esc_js ( __('Today') ); ?>', // Display text for current month link
-		monthNames: ['<?php echo osc_esc_js ( __('January') ); ?>','<?php echo osc_esc_js ( __('February') ); ?>','<?php echo osc_esc_js ( __('March') ); ?>','<?php echo osc_esc_js ( __('April') ); ?>','<?php echo osc_esc_js ( __('May') ); ?>','<?php echo osc_esc_js ( __('June') ); ?>','<?php echo osc_esc_js ( __('July') ); ?>','<?php echo osc_esc_js ( __('August') ); ?>','<?php echo osc_esc_js ( __('September') ); ?>','<?php echo osc_esc_js ( __('October') ); ?>','<?php echo osc_esc_js ( __('November') ); ?>','<?php echo osc_esc_js ( __('December') ); ?>'], // Names of months for drop-down and formatting
-		monthNamesShort: ['<?php _e('Jan'); ?>', '<?php _e('Feb'); ?>', '<?php _e('Mar'); ?>', '<?php _e('Apr'); ?>', '<?php _e('May'); ?>', '<?php _e('Jun'); ?>', '<?php _e('Jul'); ?>', '<?php _e('Aug'); ?>', '<?php _e('Sep'); ?>', '<?php _e('Oct'); ?>', '<?php _e('Nov'); ?>', '<?php _e('Dec'); ?>'], // For formatting
-		dayNames: ['<?php echo osc_esc_js ( __('Sunday') ); ?>', '<?php echo osc_esc_js ( __('Monday') ); ?>', '<?php echo osc_esc_js ( __('Tuesday') ); ?>', '<?php echo osc_esc_js ( __('Wednesday') ); ?>', '<?php echo osc_esc_js ( __('Thursday') ); ?>', '<?php echo osc_esc_js ( __('Friday') ); ?>', '<?php echo osc_esc_js ( __('Saturday') ); ?>'], // For formatting
-		dayNamesShort: ['<?php _e('Sun'); ?>', '<?php _e('Mon'); ?>', '<?php _e('Tue'); ?>', '<?php _e('Wed'); ?>', '<?php _e('Thu'); ?>', '<?php _e('Fri'); ?>', '<?php _e('Sat'); ?>'], // For formatting
-		dayNamesMin: ['<?php _e('Su'); ?>','<?php _e('Mo'); ?>','<?php _e('Tu'); ?>','<?php _e('We'); ?>','<?php _e('Th'); ?>','<?php _e('Fr'); ?>','<?php _e('Sa'); ?>'], // Column headings for days starting at Sunday
-		weekHeader: '<?php _e('Wk'); ?>', // Column header for week of the year
-		dateFormat: 'dd/mm/yy', // See format options on parseDate
-		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
-		isRTL: false, // True if right-to-left language, false if left-to-right
-		showMonthAfterYear: false, // True if the year select precedes month, false for month then year
-		yearSuffix: '' // Additional text to append to the year in the month headers
+        closeText: '<?php echo osc_esc_js ( __('Done') ); ?>', // Display text for close link
+        prevText: '<?php echo osc_esc_js ( __('Prev') ); ?>', // Display text for previous month link
+        nextText: '<?php echo osc_esc_js ( __('Next') ); ?>', // Display text for next month link
+        currentText: '<?php echo osc_esc_js ( __('Today') ); ?>', // Display text for current month link
+        monthNames: ['<?php echo osc_esc_js ( __('January') ); ?>','<?php echo osc_esc_js ( __('February') ); ?>','<?php echo osc_esc_js ( __('March') ); ?>','<?php echo osc_esc_js ( __('April') ); ?>','<?php echo osc_esc_js ( __('May') ); ?>','<?php echo osc_esc_js ( __('June') ); ?>','<?php echo osc_esc_js ( __('July') ); ?>','<?php echo osc_esc_js ( __('August') ); ?>','<?php echo osc_esc_js ( __('September') ); ?>','<?php echo osc_esc_js ( __('October') ); ?>','<?php echo osc_esc_js ( __('November') ); ?>','<?php echo osc_esc_js ( __('December') ); ?>'], // Names of months for drop-down and formatting
+        monthNamesShort: ['<?php _e('Jan'); ?>', '<?php _e('Feb'); ?>', '<?php _e('Mar'); ?>', '<?php _e('Apr'); ?>', '<?php _e('May'); ?>', '<?php _e('Jun'); ?>', '<?php _e('Jul'); ?>', '<?php _e('Aug'); ?>', '<?php _e('Sep'); ?>', '<?php _e('Oct'); ?>', '<?php _e('Nov'); ?>', '<?php _e('Dec'); ?>'], // For formatting
+        dayNames: ['<?php echo osc_esc_js ( __('Sunday') ); ?>', '<?php echo osc_esc_js ( __('Monday') ); ?>', '<?php echo osc_esc_js ( __('Tuesday') ); ?>', '<?php echo osc_esc_js ( __('Wednesday') ); ?>', '<?php echo osc_esc_js ( __('Thursday') ); ?>', '<?php echo osc_esc_js ( __('Friday') ); ?>', '<?php echo osc_esc_js ( __('Saturday') ); ?>'], // For formatting
+        dayNamesShort: ['<?php _e('Sun'); ?>', '<?php _e('Mon'); ?>', '<?php _e('Tue'); ?>', '<?php _e('Wed'); ?>', '<?php _e('Thu'); ?>', '<?php _e('Fri'); ?>', '<?php _e('Sat'); ?>'], // For formatting
+        dayNamesMin: ['<?php _e('Su'); ?>','<?php _e('Mo'); ?>','<?php _e('Tu'); ?>','<?php _e('We'); ?>','<?php _e('Th'); ?>','<?php _e('Fr'); ?>','<?php _e('Sa'); ?>'], // Column headings for days starting at Sunday
+        weekHeader: '<?php _e('Wk'); ?>', // Column header for week of the year
+        dateFormat: 'dd/mm/yy', // See format options on parseDate
+        firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
+        isRTL: false, // True if right-to-left language, false if left-to-right
+        showMonthAfterYear: false, // True if the year select precedes month, false for month then year
+        yearSuffix: '' // Additional text to append to the year in the month headers
             };
         </script>
             <?php
@@ -188,7 +188,7 @@ FB;
                                 echo '<option value=""></option>';
                             }
                             foreach($options as $option) {
-                                echo '<option value="'.osc_esc_html($option).'" '.($field['s_value']==$option?'selected="selected"':'').'>'.$option.'</option>';
+                                echo '<option value="'.osc_esc_html($option).'" '.($field['s_value']==$option?'selected="selected"':'').'>'.__($option, 'DB_Values').'</option>';
                             }
                             echo '</select>';
                         }
@@ -201,7 +201,7 @@ FB;
                             $options = explode(",", $field['s_options']);
                             if(count($options)>0) {
                                 foreach($options as $key => $option) {
-                                    echo '<label for="meta_' . $field['s_slug'] . '_'.$key.'"><input type="radio" name="meta['.$field['pk_i_id'].']" id="meta_' . $field['s_slug'] . '_'.$key.'" value="'.osc_esc_html($option).'"'.($field['s_value']==$option?' checked="checked"':'').' />'.$option.'</label><br/>';
+                                    echo '<label for="meta_' . $field['s_slug'] . '_'.$key.'"><input type="radio" name="meta['.$field['pk_i_id'].']" id="meta_' . $field['s_slug'] . '_'.$key.'" value="'.osc_esc_html($option).'"'.($field['s_value']==$option?' checked="checked"':'').' />'.__($option, 'DB_Values').'</label><br/>';
                                 }
                             }
                         }
@@ -212,7 +212,7 @@ FB;
                             if(count($options)>0) {
                                 echo '<ul>';
                                 foreach($options as $key => $option) {
-                                    echo '<li><input type="radio" name="meta['.$field['pk_i_id'].']" id="meta_' . $field['s_slug'] . '_'.$key.'" value="'.osc_esc_html($option).'"'.($field['s_value']==$option?' checked="checked"':'').' /><label for="meta_' . $field['s_slug'] . '_'.$key.'">'.$option.'</label></li>';
+                                    echo '<li><input type="radio" name="meta['.$field['pk_i_id'].']" id="meta_' . $field['s_slug'] . '_'.$key.'" value="'.osc_esc_html($option).'"'.($field['s_value']==$option?' checked="checked"':'').' /><label for="meta_' . $field['s_slug'] . '_'.$key.'">'.__($option, 'DB_Values').'</label></li>';
                                 }
                                 echo '</ul>';
                             }

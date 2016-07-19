@@ -551,7 +551,7 @@
 
         $params = array(
             'from'      => osc_contact_email(),
-            'from_name' => osc_page_title(),
+            'from_name' => __(osc_page_title(), 'DB_Values'),
             'reply_to'  => $aItem['yourEmail'],
             'subject'   => $title,
             'to'        => $aItem['friendEmail'],
@@ -618,7 +618,7 @@
         $body  = osc_apply_filter('email_item_inquiry_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_item_inquiry_description', $content['s_text'], $aItem)), $words), $aItem);
 
         $from      = osc_contact_email();
-        $from_name = osc_page_title();
+        $from_name = __(osc_page_title(), 'DB_Values');
 
         $emailParams = array(
             'from'      => $from,
@@ -1029,7 +1029,7 @@
                 'subject'  => $title,
                 'from'     => _osc_from_email_aux(),
                 'to'       => osc_contact_email(),
-                'to_name'  => osc_page_title(),
+                'to_name'  => __(osc_page_title(), 'DB_Values'),
                 'body'     => $body,
                 'alt_body' => $body,
             );
@@ -1176,7 +1176,7 @@
             $name,
             $username,
             $data['s_password'],
-            '<a href="' . osc_admin_base_url() . '">' . osc_page_title() . '</a>',
+            '<a href="' . osc_admin_base_url() . '">' . __(osc_page_title(), 'DB_Values') . '</a>',
         );
         $title_email = osc_apply_filter('email_new_admin_title_after', osc_mailBeauty(osc_apply_filter('email_title', osc_apply_filter('email_new_admin_title', $content['s_title'], $data)), $words), $data);
         $body_email  = osc_apply_filter('email_new_admin_description_after', osc_mailBeauty(osc_apply_filter('email_description', osc_apply_filter('email_new_admin_description', $content['s_text'], $data)), $words), $data);
@@ -1288,7 +1288,7 @@
             'subject'  => $title,
             'from'     => _osc_from_email_aux(),
             'to'       => osc_contact_email(),
-            'to_name'  => osc_page_title(),
+            'to_name'  => __(osc_page_title(), 'DB_Values'),
             'body'     => $body,
             'alt_body' => $body,
         );

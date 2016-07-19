@@ -51,7 +51,7 @@
             }
 
             $kwords = array('{WEB_URL}', '{WEB_TITLE}');
-            $rwords = array(osc_base_url(), osc_page_title());
+            $rwords = array(osc_base_url(), __(osc_page_title(), 'DB_Values'));
             foreach($page['locale'] as $k => $v) {
                 $page['locale'][$k]['s_title'] = str_ireplace($kwords, $rwords, osc_apply_filter('email_description', $v['s_title']));
                 $page['locale'][$k]['s_text'] = str_ireplace($kwords, $rwords, osc_apply_filter('email_description', $v['s_text']));

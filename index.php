@@ -47,8 +47,8 @@
             } else {
                 require_once LIB_PATH . 'osclass/helpers/hErrors.php';
 
-                $title   = sprintf(__('Maintenance &raquo; %s'), osc_page_title());
-                $message = sprintf(__('We are sorry for any inconvenience. %s is undergoing maintenance.') . '.', osc_page_title() );
+                $title   = sprintf(__('Maintenance &raquo; %s'), __(osc_page_title(), 'DB_Values'));
+                $message = sprintf(__('We are sorry for any inconvenience. %s is undergoing maintenance.') . '.', __(osc_page_title(), 'DB_Values') );
                 osc_die($title, $message);
             }
         } else {

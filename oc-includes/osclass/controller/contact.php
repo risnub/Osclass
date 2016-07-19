@@ -88,9 +88,9 @@ MESSAGE;
                                         $params = array(
                                             'from'      => osc_contact_email(),
                                             'to'        => osc_contact_email(),
-                                            'to_name'   => osc_page_title(),
+                                            'to_name'   => __(osc_page_title(), 'DB_Values'),
                                             'reply_to'  => $yourEmail,
-                                            'subject'   => '[' . osc_page_title() . '] ' . __('Contact'),
+                                            'subject'   => '[' . __(osc_page_title(), 'DB_Values') . '] ' . __('Contact'),
                                             'body'      => nl2br($message)
                                         );
 
@@ -154,11 +154,11 @@ MESSAGE;
                                             }
 
                                             if ($sendSucc) {
-						osc_add_flash_ok_message( _m('Your email has been sent properly. Thank you for contacting us!') );
-					    }
-					    else {
-						osc_add_flash_ok_message( _m('Sorry, your email cannot be sent due to system problems at this moment!') );
-					    }
+                        osc_add_flash_ok_message( _m('Your email has been sent properly. Thank you for contacting us!') );
+                        }
+                        else {
+                        osc_add_flash_ok_message( _m('Sorry, your email cannot be sent due to system problems at this moment!') );
+                        }
                                         } else {
                                             osc_add_flash_error_message( _m('The file you tried to upload does not have a valid extension') );
                                         }

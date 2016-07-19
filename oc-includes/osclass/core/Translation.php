@@ -61,6 +61,10 @@
                 }
                 $this->_load($theme_file, $domain);
 
+                // load database values (customizable)
+                $dbvalues_file = osc_translations_path() . $locale . '/DB_Values.mo';
+                $this->_load($dbvalues_file, 'DB_Values');
+                
                 // load plugins
                 $aPlugins = Plugins::listEnabled();
                 foreach($aPlugins as $plugin) {

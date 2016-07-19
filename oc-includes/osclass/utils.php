@@ -373,7 +373,7 @@ function osc_sendMail($params) {
 
     $from_name = osc_mailserver_name_from();
     if(empty($from_name)) {
-        $from_name = osc_page_title();
+        $from_name = __(osc_page_title(), 'DB_Values');
         if( array_key_exists('from_name', $params) ) {
             $from_name = $params['from_name'];
         }
@@ -473,10 +473,10 @@ function osc_mailBeauty($text, $params) {
     );
     $rwords = array(
         osc_base_url(),
-        osc_page_title(),
-        '<a href="' . osc_base_url() . '">' . osc_page_title() . '</a>',
-		date(osc_date_format()?osc_date_format():'Y-m-d').' '.date(osc_time_format()?osc_time_format():'H:i:s'),
-		date(osc_time_format()?osc_time_format():'H:i'),
+        __(osc_page_title(), 'DB_Values'),
+        '<a href="' . osc_base_url() . '">' . __(osc_page_title(), 'DB_Values') . '</a>',
+        date(osc_date_format()?osc_date_format():'Y-m-d').' '.date(osc_time_format()?osc_time_format():'H:i:s'),
+        date(osc_time_format()?osc_time_format():'H:i'),
         Params::getServerParam('REMOTE_ADDR')
     );
     $text = str_ireplace($kwords, $rwords, $text);
