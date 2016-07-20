@@ -176,9 +176,9 @@ FB;
                     }
                 } else if($field['e_type']=="DROPDOWN") {
                     if($search) {
-                        echo '<h6>'.$field['s_name'].'</h6>';
+                        echo '<h6>'.__($field['s_name'], 'DB_Values').'</h6>';
                     } else {
-                        echo '<label for="meta_'.$field['s_slug'].'">'.$field['s_name'].': </label>';
+                        echo '<label for="meta_'.$field['s_slug'].'">'.__($field['s_name'], 'DB_Values').': </label>';
                     }
                     if(isset($field) && isset($field['s_options'])) {
                         $options = explode(",", $field['s_options']);
@@ -196,7 +196,7 @@ FB;
                 } else if($field['e_type']=="RADIO") {
                     // radio at search page, becomes dropdown with radio options
                     if($search) {
-                        echo '<h6>'.$field['s_name'].'</h6>';
+                        echo '<h6>'.__($field['s_name'], 'DB_Values').'</h6>';
                         if(isset($field) && isset($field['s_options'])) {
                             $options = explode(",", $field['s_options']);
                             if(count($options)>0) {
@@ -206,7 +206,7 @@ FB;
                             }
                         }
                     } else {
-                        echo '<label for="meta_'.$field['s_slug'].'">'.$field['s_name'].': </label>';
+                        echo '<label for="meta_'.$field['s_slug'].'">'.__($field['s_name'], 'DB_Values').': </label>';
                         if(isset($field) && isset($field['s_options'])) {
                             $options = explode(",", $field['s_options']);
                             if(count($options)>0) {
