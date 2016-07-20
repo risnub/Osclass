@@ -858,9 +858,9 @@
         $("#countryId").on("change",function(){
             var pk_c_code = $(this).val();
             <?php if($path=="admin") { ?>
-                var url = '<?php echo osc_admin_base_url(true)."?page=ajax&action=regions&countryId="; ?>' + pk_c_code;
+                var url = '<?php echo osc_admin_base_url(true)."?page=ajax&action=regions_l10n&countryId="; ?>' + pk_c_code;
             <?php } else { ?>
-                var url = '<?php echo osc_base_url(true)."?page=ajax&action=regions&countryId="; ?>' + pk_c_code;
+                var url = '<?php echo osc_base_url(true)."?page=ajax&action=regions_l10n&countryId="; ?>' + pk_c_code;
             <?php }; ?>
             var result = '';
 
@@ -935,9 +935,9 @@
         $("#regionId").on("change",function(){
             var pk_c_code = $(this).val();
             <?php if($path=="admin") { ?>
-                var url = '<?php echo osc_admin_base_url(true)."?page=ajax&action=cities&regionId="; ?>' + pk_c_code;
+                var url = '<?php echo osc_admin_base_url(true)."?page=ajax&action=cities_l10n&regionId="; ?>' + pk_c_code;
             <?php } else { ?>
-                var url = '<?php echo osc_base_url(true)."?page=ajax&action=cities&regionId="; ?>' + pk_c_code;
+                var url = '<?php echo osc_base_url(true)."?page=ajax&action=cities_l10n&regionId="; ?>' + pk_c_code;
             <?php }; ?>
 
             var result = '';
@@ -1222,13 +1222,13 @@
         static public function plugin_post_item($case = 'form') {
 ?>
 <script type="text/javascript">
-	var catPriceEnabled = new Array();
-	<?php
-	$categories = Category::newInstance()->listAll(false);
-	foreach($categories as $c) {
-		echo 'catPriceEnabled['.$c['pk_i_id'].'] = '.$c['b_price_enabled'].';';
-	}
-	?>
+    var catPriceEnabled = new Array();
+    <?php
+    $categories = Category::newInstance()->listAll(false);
+    foreach($categories as $c) {
+        echo 'catPriceEnabled['.$c['pk_i_id'].'] = '.$c['b_price_enabled'].';';
+    }
+    ?>
     $("#catId").change(function(){
         var cat_id = $(this).val();
         <?php if(OC_ADMIN) { ?>
@@ -1239,16 +1239,16 @@
         var result = '';
 
         if(cat_id != '') {
-			if(catPriceEnabled[cat_id] == 1) {
-				$("#price").closest("div").show();
+            if(catPriceEnabled[cat_id] == 1) {
+                $("#price").closest("div").show();
                                 // trigger show-price event
                                 $('#price').trigger('show-price');
-			} else {
-				$("#price").closest("div").hide();
-				$('#price').val('') ;
+            } else {
+                $("#price").closest("div").hide();
+                $('#price').val('') ;
                                 // trigger hide-price event
                                 $('#price').trigger('hide-price');
-			}
+            }
 
             $.ajax({
                 type: "POST",
@@ -1271,12 +1271,12 @@
         var result = '';
 
         if(cat_id != '') {
-			if(catPriceEnabled[cat_id] == 1) {
-				$("#price").closest("div").show();
-			} else {
-				$("#price").closest("div").hide();
-				$('#price').val('') ;
-			}
+            if(catPriceEnabled[cat_id] == 1) {
+                $("#price").closest("div").show();
+            } else {
+                $("#price").closest("div").hide();
+                $('#price').val('') ;
+            }
 
             $.ajax({
                 type: "POST",

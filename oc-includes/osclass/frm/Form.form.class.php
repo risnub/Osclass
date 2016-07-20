@@ -20,7 +20,7 @@
         static protected function generic_select($name, $items, $fld_key, $fld_name, $default_item, $id) {
             $name = osc_esc_html($name);
             echo '<select name="' . $name . '" id="' . preg_replace('|([^_a-zA-Z0-9-]+)|', '', $name) . '">';
-            if (isset($default_item)) echo '<option value="">' . __($default_item, 'DB_Value') . '</option>';
+            if (isset($default_item)) echo '<option value="">' . __($default_item, 'DB_Values') . '</option>';
             foreach($items as $i) {
                 if(isset($fld_key) && isset($fld_name))
                 echo '<option value="' . osc_esc_html($i[$fld_key]) . '"' . ( ($id == $i[$fld_key]) ? ' selected="selected"' : '' ) . '>' . __($i[$fld_name], 'DB_Values') . '</option>';

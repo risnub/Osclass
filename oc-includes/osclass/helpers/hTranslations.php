@@ -42,6 +42,23 @@
     }
 
     /**
+     * Call Translate strings without being extracted by makepot.php. Used by ajax calls.
+     * 
+     * @param string $key
+     * @param string $domain
+     * @return string
+     */
+    function ajax_gettext($key, $domain = 'core') {
+        $gt = Translation::newInstance()->_get($domain);
+
+        if(!$gt) {
+            return $key;
+        }
+        $string = $gt->translate($key);
+        return osc_apply_filter('gettext', $string);
+    }
+    
+    /**
      * Translate strings and echo them
      *
      * @since unknown

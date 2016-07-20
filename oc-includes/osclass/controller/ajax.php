@@ -38,8 +38,28 @@
                     $regions = Region::newInstance()->findByCountry(Params::getParam("countryId"));
                     echo json_encode($regions);
                 break;
+                case 'regions_l10n':
+                    $regions = Region::newInstance()->findByCountry(Params::getParam("countryId"));
+                    // localize the region based on current language setting
+                    // iterate by reference because we want to modify the value based on locale
+                    foreach ($regions as &$r) {
+                        // how to pass along this curLocale value?
+                        $r['s_name'] = ajax_gettext($r['s_name'], 'DB_Values');
+                    }
+                    echo json_encode($regions);
+                break;
                 case 'cities': //Returns cities given a regionId
                     $cities = City::newInstance()->findByRegion(Params::getParam("regionId"));
+                    echo json_encode($cities);
+                break;
+                case 'cities_l10n':
+                    $cities = City::newInstance()->findByRegion(Params::getParam("regionId"));
+                    // localize the city names based on current language setting
+                    // iterate by reference because we want to modify the value based on locale
+                    foreach ($cities as &$c) {
+                        // how to pass along this curLocale value?
+                        $c['s_name'] = ajax_gettext($c['s_name'], 'DB_Values');
+                    }
                     echo json_encode($cities);
                 break;
                 case 'location': // This is the autocomplete AJAX
