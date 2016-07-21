@@ -16,6 +16,21 @@
  * limitations under the License.
  */
 
+    /**
+     * Convenient function for determining the session-locale value, based on whether it
+     * is a admin or user session
+     * 
+     */ 
+    function fn_email_locale_login_type() {
+        if( OC_ADMIN ) {
+            $locale = osc_current_admin_locale();
+        } else {
+            $locale = osc_current_user_locale();
+        }
+        
+        return $locale;    
+    }
+    
     function fn_email_alert_validation($alert, $email, $secret) {
         $user['s_name'] = "";
 
@@ -242,7 +257,7 @@
 
     function fn_email_comment_validated($aComment) {
         $mPages = new Page();
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
         $aPage = $mPages->findByInternalName('email_comment_validated');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -290,7 +305,7 @@
     function fn_email_new_item_non_register_user($item) {
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_new_item_non_register_user');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -346,7 +361,7 @@
 
     function fn_email_user_forgot_password($user, $password_url) {
         $aPage = Page::newInstance()->findByInternalName('email_user_forgot_password');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -389,7 +404,7 @@
 
     function fn_email_user_registration($user) {
         $pageManager = new Page();
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
         $aPage = $pageManager->findByInternalName('email_user_registration');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -426,7 +441,7 @@
     osc_add_hook('hook_email_user_registration', 'fn_email_user_registration');
 
     function fn_email_new_email($new_email, $validation_url) {
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
         $aPage = Page::newInstance()->findByInternalName('email_new_email');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -470,7 +485,8 @@
 
     function fn_email_user_validation($user, $input) {
         $mPages = new Page();
-        $locale = osc_current_user_locale();
+        // get user/admin locale
+        $locale = fn_email_locale_login_type();
         $aPage = $mPages->findByInternalName('email_user_validation');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -513,7 +529,7 @@
     function fn_email_send_friend($aItem) {
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_send_friend');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -580,7 +596,7 @@
 
         $mPages = new Page();
         $aPage  = $mPages->findByInternalName('email_item_inquiry');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if( isset($aPage['locale'][$locale]['s_title']) ) {
             $content = $aPage['locale'][$locale];
@@ -677,7 +693,7 @@
 
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_new_comment_admin');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -726,7 +742,7 @@
         $contactEmail   = $item['s_contact_email'];
         $contactName    = $item['s_contact_name'];
         $mPages = new Page();
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
         $aPage = $mPages->findByInternalName('email_item_validation');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -813,7 +829,7 @@
         View::newInstance()->_exportVariableToView('item', $item);
         $title  = osc_item_title();
         $mPages = new Page();
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
         $aPage = $mPages->findByInternalName('email_admin_new_item');
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
@@ -908,7 +924,7 @@
 
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_item_validation_non_register_user');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -1003,7 +1019,7 @@
 
     function fn_email_admin_new_user($user) {
         $pageManager = new Page();
-        $locale      = osc_current_user_locale();
+        $locale      = fn_email_locale_login_type();
         $aPage       = $pageManager->findByInternalName('email_admin_new_user');
 
         if( isset($aPage['locale'][$locale]['s_title']) ) {
@@ -1041,7 +1057,7 @@
     function fn_email_contact_user($id, $yourEmail, $yourName, $phoneNumber, $message) {
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_contact_user');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -1102,7 +1118,7 @@
 
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_new_comment_user');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -1157,7 +1173,7 @@
 
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_new_admin');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
@@ -1204,7 +1220,7 @@
 
         $mPages = new Page();
         $aPage = $mPages->findByInternalName('email_warn_expiration');
-        $locale = osc_current_user_locale();
+        $locale = fn_email_locale_login_type();
 
         if(isset($aPage['locale'][$locale]['s_title'])) {
             $content = $aPage['locale'][$locale];
