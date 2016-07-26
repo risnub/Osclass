@@ -191,7 +191,7 @@ CREATE TABLE /*TABLE_PREFIX*/t_category_description (
     fk_c_locale_code CHAR(5) NOT NULL,
     s_name VARCHAR(100) NULL DEFAULT NULL,
     s_description TEXT NULL,
-    s_slug VARCHAR(100) NOT NULL,
+    s_slug VARCHAR(500) NOT NULL,
 
         PRIMARY KEY (fk_i_category_id, fk_c_locale_code),
         INDEX idx_s_slug (s_slug),
