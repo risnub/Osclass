@@ -424,6 +424,10 @@
         /**
          * Connect to the database passed per parameter
          * 
+         * WORKAROUND: sql.safe_mode does not seem to cause this mysqli constructor
+         *             to ignore arguments and use default parameters. We force
+         *             this behavior by not passing them in.
+         * 
          * @param string $host Database host
          * @param string $user Database user
          * @param string $password Database user password
@@ -433,9 +437,9 @@
         function _connectToDb($host, $user, $password, &$connId)
         {
             if( OSC_DEBUG ) {
-                $connId = new mysqli($host, $user, $password);
+                $connId = new mysqli();
             } else {
-                $connId = @new mysqli($host, $user, $password);
+                $connId = @new mysqli();
             }
 
             if ( $connId->connect_errno ) {
@@ -550,7 +554,7 @@
 
             return false;
         }
-	}
+    }
 
     /* file end: ./oc-includes/osclass/classes/database/DBConnectionClass.php */
 ?>
