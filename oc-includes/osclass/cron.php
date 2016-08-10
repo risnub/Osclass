@@ -27,8 +27,8 @@
     if( is_array($cron) ) {
         $i_next = strtotime($cron['d_next_exec']);
         $i_last = strtotime($cron['d_last_exec']);
-		// could be off by one-second, and condition fail, causing warning email never sent.
-		// modify condition so that it passes as long as $i_now > i_last
+        // could be off by one-second, and condition fail, causing warning email never sent.
+        // modify condition so that it passes as long as $i_now > i_last
         if( (CLI && (Params::getParam('cron-type') === 'hourly')) || ((($i_now - $i_last) >= 0) && !CLI) ) {
             // update the next execution time in t_cron
             $d_next = date('Y-m-d H:i:s', $i_now + 3600);
@@ -72,8 +72,10 @@
     $cron = Cron::newInstance()->getCronByType('DAILY');
     if( is_array($cron) ) {
         $i_next = strtotime($cron['d_next_exec']);
-
-        if( (CLI && (Params::getParam('cron-type') === 'daily')) || ((($i_now - $i_next) >= 0) && !CLI) ) {
+        $i_last = strtotime($cron['d_last_exec']);
+        // could be off by one-second, and condition fail, causing warning email never sent.
+        // modify condition so that it passes as long as $i_now > i_last
+        if( (CLI && (Params::getParam('cron-type') === 'daily')) || ((($i_now - $i_last) >= 0) && !CLI) ) {
             // update the next execution time in t_cron
             $d_next = date('Y-m-d H:i:s', $i_now + (24 * 3600));
             Cron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
@@ -108,8 +110,10 @@
     $cron = Cron::newInstance()->getCronByType('WEEKLY');
     if(is_array($cron)) {
         $i_next = strtotime($cron['d_next_exec']);
-
-        if( (CLI && (Params::getParam('cron-type') === 'weekly')) || ((($i_now - $i_next) >= 0) && !CLI) ) {
+         $i_last = strtotime($cron['d_last_exec']);
+        // could be off by one-second, and condition fail, causing warning email never sent.
+        // modify condition so that it passes as long as $i_now > i_last
+        if( (CLI && (Params::getParam('cron-type') === 'weekly')) || ((($i_now - $i_last) >= 0) && !CLI) ) {
             // update the next execution time in t_cron
             $d_next = date('Y-m-d H:i:s', $i_now + (7 * 24 * 3600));
             Cron::newInstance()->update(array('d_last_exec' => $d_now, 'd_next_exec' => $d_next),
