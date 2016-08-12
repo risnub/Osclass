@@ -427,6 +427,8 @@
          * WORKAROUND: sql.safe_mode does not seem to cause this mysqli constructor
          *             to ignore arguments and use default parameters. We force
          *             this behavior by not passing them in.
+         * WORKAROUND: Seems like 'host' is necessary argument (even when default_host
+         *              is set). Caused trouble during Osclass installation.
          * 
          * @param string $host Database host
          * @param string $user Database user
@@ -437,9 +439,9 @@
         function _connectToDb($host, $user, $password, &$connId)
         {
             if( OSC_DEBUG ) {
-                $connId = new mysqli();
+                $connId = new mysqli($host);
             } else {
-                $connId = @new mysqli();
+                $connId = @new mysqli($host);
             }
 
             if ( $connId->connect_errno ) {
