@@ -58,6 +58,7 @@
                 '{WEB_URL}'         => __('Site home page url.'),
                 '{WEB_LINK}'        => __('Site home page link.'),
                 '{WEB_TITLE}'       => __('Title of your site'),
+                '{SOCIAL_MEDIA_URL}' => __('Social Media Link to your site'),
                 '{CURRENT_DATE}'    => __('Current date'),
                 '{HOUR}'            => __('Hour'),
                 '{IP_ADDRESS}'      => __('User ip address'),

@@ -514,6 +514,15 @@
     }
 
     /**
+     * Gets website's social media url
+     *
+     * @return string
+     */
+    function osc_social_media_url() {
+        return (getPreference('social_media_url'));
+    }
+    
+    /**
      * Gets website's default language
      *
      * @return string

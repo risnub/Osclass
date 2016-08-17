@@ -467,6 +467,7 @@ function osc_mailBeauty($text, $params) {
         '{WEB_URL}',
         '{WEB_TITLE}',
         '{WEB_LINK}' ,
+        '{SOCIAL_MEDIA_URL}',
         '{CURRENT_DATE}',
         '{HOUR}',
         '{IP_ADDRESS}'
@@ -475,6 +476,7 @@ function osc_mailBeauty($text, $params) {
         osc_base_url(),
         __(osc_page_title(), 'DB_Values'),
         '<a href="' . osc_base_url() . '">' . __(osc_page_title(), 'DB_Values') . '</a>',
+        '<a href="' . osc_social_media_url() . '">' . __("Receive EE Classifieds Updates on Twitter") . '</a>',
         date(osc_date_format()?osc_date_format():'Y-m-d').' '.date(osc_time_format()?osc_time_format():'H:i:s'),
         date(osc_time_format()?osc_time_format():'H:i'),
         Params::getServerParam('REMOTE_ADDR')
