@@ -14,6 +14,7 @@ Plugin update URI: http://www.osclass.org/files/plugins/google_analytics/update.
         $fields["s_section"] = 'plugin-google_analytics';
         $fields["s_name"]    = 'google_analytics_id';
         $fields["e_type"]    = 'STRING';
+        $fields["s_value"]    = 'Actual-value-to-be-set';
         Preference::newInstance()->insert($fields);
     }
 
