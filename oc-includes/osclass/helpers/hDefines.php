@@ -34,7 +34,7 @@
         if(MULTISITE) {
             $path = osc_multisite_url();
         } else {
-            $path = WEB_PATH;
+            $path = _osc_web_path_with_http_port();
         }
         // add the index.php if it's true
         if($with_index) {
@@ -44,6 +44,48 @@
         return osc_apply_filter('base_url', $path, $with_index);
     }
 
+    /*
+     * Adds the incoming HTTP request port to WEB_PATH
+     * 
+     * This is important in a port-forwarding situation (from firefox at OSX Host)
+     * 
+     * @return string
+     */
+    function _osc_web_path_with_http_port() {
+        $web_path = WEB_PATH;
+        // look for 'port' in Host request-header
+        $reqHost = $_SERVER['HTTP_HOST'];
+        $port = parse_url($reqHost, PHP_URL_PORT);
+        if ($port !== NULL) {
+            $web_path_parts = parse_url(WEB_PATH);
+            if ($web_path_parts !== NULL) {
+                $web_path_parts['port'] = $port;
+                $web_path = unparse_url($web_path_parts);
+            }
+        }
+        
+        return $web_path;
+    }
+    
+    /*
+     * build URL from the parts retrieved from parse_url()
+     * @url http://php.net/manual/en/function.parse-url.php
+     * 
+     * @return string
+     */
+    function unparse_url($parsed_url) {
+        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
+        $pass     = ($user || $pass) ? "$pass@" : '';
+        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+        return "$scheme$user$pass$host$port$path$query$fragment";
+    } 
+    
     function osc_subdomain_base_url($params = array()) {
         $fields['category'] = 'sCategory';
         $fields['country'] = 'sCountry';
@@ -228,20 +270,20 @@
      * @return string
      */
     function osc_current_web_theme_path($file = '') {
-		$info = WebThemes::newInstance()->loadThemeInfo(WebThemes::newInstance()->getCurrentTheme());
+        $info = WebThemes::newInstance()->loadThemeInfo(WebThemes::newInstance()->getCurrentTheme());
 
         if( file_exists(WebThemes::newInstance()->getCurrentThemePath() . $file) ){
             require WebThemes::newInstance()->getCurrentThemePath() . $file;
         } elseif($info['template'] != '') {
-			WebThemes::newInstance()->setParentTheme();
+            WebThemes::newInstance()->setParentTheme();
             if( file_exists(WebThemes::newInstance()->getCurrentThemePath() . $file) ) {
               require WebThemes::newInstance()->getCurrentThemePath() . $file;
             } else {
-				WebThemes::newInstance()->setGuiTheme();
-	            if( file_exists(WebThemes::newInstance()->getCurrentThemePath() . $file) ) {
-	                require WebThemes::newInstance()->getCurrentThemePath() . $file;
-	            }
-			}
+                WebThemes::newInstance()->setGuiTheme();
+                if( file_exists(WebThemes::newInstance()->getCurrentThemePath() . $file) ) {
+                    require WebThemes::newInstance()->getCurrentThemePath() . $file;
+                }
+            }
         } else {
             WebThemes::newInstance()->setGuiTheme();
             if( file_exists(WebThemes::newInstance()->getCurrentThemePath() . $file) ) {
